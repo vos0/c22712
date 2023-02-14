@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5615680-c090-497d-a104-1337ed85f850" name="Changes" comment="Первый коммит">
+      <change afterPath="$PROJECT_DIR$/Задания/task1/Kuznetsov/test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +41,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Alex/c22712",
+    "last_opened_file_path": "C:/Users/Даниил/c22712",
     "settings.editor.selected.configurable": "vcs.Git"
   }
 }]]></component>
