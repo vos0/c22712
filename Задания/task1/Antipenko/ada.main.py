@@ -10,7 +10,9 @@ html_text = browser.page_source
 time.sleep(20)
 soup = BeautifulSoup(html_text, 'lxml')
 films = soup.find_all('div', class_='base-movie-main-info_mainInfo__ZL_u3')
+'''
 print(soup)
 print(films)
+'''
 for film in films:
     print(film.text)
