@@ -1,15 +1,14 @@
->>> from bs4 import BeautifulSoup
->>> from selenium import webdriver
->>> from selenium.webdriver.chrome.service import Service
->>> s = Service('C:\\Users\\Dasha\\Desktop\\Progect\\chromedriver.exe')
->>> browser = webdriver.Chrome(service=s)
->>> browser.get('https://www.livelib.ru/selection/907286-vybor-redaktsii-elle-girl')
->>> html_text=browser.page_source
->>> soup=BeautifulSoup(html_text, 'lxml')
->>> infos = soup.find_
->>> films=soup.find_all(attrs={"class": "brow-book-name with-cycle"}
-)
->>> for film in films:
+ from bs4 import BeautifulSoup
+ from selenium import webdriver
+ from selenium.webdriver.chrome.service import Service
+ s = Service('C:\\Users\\Dasha\\Desktop\\Progect\\chromedriver.exe')
+browser = webdriver.Chrome(service=s)
+ browser.get('https://www.livelib.ru/selection/907286-vybor-redaktsii-elle-girl')
+ html_text=browser.page_source
+ soup=BeautifulSoup(html_text, 'lxml')
+ infos = soup.find_
+ films=soup.find_all(attrs={"class": "brow-book-name with-cycle"})
+ for film in films:
 	print(film.text)
 
 
