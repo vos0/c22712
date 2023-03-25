@@ -68,3 +68,4 @@ cursor.execute("select * from laptops")
 print("Результат", cursor.fetchall())
 cursor.close()
 connection.close()
+
