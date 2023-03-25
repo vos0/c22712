@@ -68,7 +68,3 @@ cursor.execute("select * from laptops")
 print("Результат", cursor.fetchall())
 cursor.close()
 connection.close()
-'''
-url = 'https://mephi.ru/content/public/styles/1015x500/public/images/slider/dod_na_sayt_mifi.jpg?itok=7XJZoP3t'
-wget.download(url, 'C:\Games\Img\cat2.jpg')
-'''
