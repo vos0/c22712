@@ -21,8 +21,11 @@ with psyc.connect(dbname="db_for_parse", user="perfecto") as conn:
             img_tag = product.find(attrs={"class": "imagef"}).find("img")
             title = img_tag.attrs.get("alt")
             image = url + img_tag.attrs.get("src")
+            price = product.find(attrs={"class": "product-price"}).text
+            desc = product.find(attrs={"class": "product-desc"}).text
             download(url + img_tag.attrs.get("src"), f"images/{i}.jpg")
 
-            cursor.execute(f"insert into images(link, name) values ('{image}', '{title}')")
+            cursor.execute(f"""insert into images(link, name, price, description, file)
+                               values ('{image}', '{title}', '{price}', '{desc}', 'images/{i}.jpg')""")
         
         conn.commit()
