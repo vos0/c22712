@@ -15,8 +15,8 @@ soup = BeautifulSoup(html_text, 'lxml')
 
 creat_table = """ create table Cars_volks
     (id serial primary key, car_name varchar(20),
-    price varchar(15), adress varchar(40),
-    scr varchar(100)) """
+    price varchar(15), adress varchar(300),
+    scr varchar(150)) """
 #cursor.execute(creat_table)
 connection.commit()
 
@@ -30,8 +30,8 @@ pictures = soup.find_all('div', class_='avn001-2_image image__container')
 
 for i in range(len(car_names)):
     url = pictures[i].find('img').attrs['src']
-    filename = f"D:\Games\PyCharm\proj1\\img\{i}.jpg"
-    wget.download(url, filename)
+    filename = f"c22712\\Задания\\task1\\nikitin\\img\\{i}.jpg"
+#    wget.download(url, filename)      представим что картинки скачались:)
 
     insert_qwery = f"""INSERT INTO public.Cars_volks(car_name, price, adress, scr)
     	VALUES ('{car_names[i].text}', '{prices[i].text}', '{adresses[i].text}', '{filename}')""";
