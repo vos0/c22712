@@ -28,7 +28,6 @@ pictures = b_soup.find_all('div', class_="catalog-list-item__img-wrapper")
 for i in range(15):
     url = 'https://amwine.ru'+pictures[i].find('a').find('img').attrs['data-src']
     filename = f"Programming\\23.03\img\{i}.jpg"
-    print(filename)
     wget.download(url, filename)
     ins_qwery = f"""insert into public.Parser(page_name, price, priceDis, mark, scr) values ('{name[i].text}', '{price[i].text}', '{priceDis[i].text}',  '{mark[i].text}', '{filename}')"""
     cursor.execute(ins_qwery)
