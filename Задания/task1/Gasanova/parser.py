@@ -1,4 +1,4 @@
-#made by dialuna (or just Diana Gasanova) <3
+# Diana Gasanova
 import requests
 from bs4 import BeautifulSoup as bs
 URL = "https://www.kinopoisk.ru/lists/movies/top-250-2020/"
