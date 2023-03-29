@@ -23,9 +23,9 @@ browser.get('https://www.hellride.ru/catalog/zapchasti-dlya-tryukovyh-samokatov/
 html_code = browser.page_source
 soup = BeautifulSoup(html_code, 'lxml')
 
-name = soup.find_all('div', class_='product-card__title')
-price = soup.find_all('div', class_='product-card__price')
-picture = soup.find_all('div', class_='product-slider__slide-img swiper-lazy swiper-lazy-loaded')
+name = soup.find_all('span', class_='product-card__title')
+price = soup.find_all('span', class_='product-card__price')
+picture = soup.find_all('img', class_='product-slider__slide-img swiper-lazy swiper-lazy-loaded')
 
 for i in range(len(name)):
     url = picture[i].find('img').attrs['src']
