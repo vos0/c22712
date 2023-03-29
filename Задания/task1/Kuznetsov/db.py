@@ -8,14 +8,14 @@ connection = psycopg2.connect(host='localhost', dbname='dbdata', user='postgres'
 
 cursor = connection.cursor()
 
-creat_qwery = """ create table Parser 
+creat_qwery = """ create table Parsing 
     (id serial primary key, product_name varchar(100), description varchar(1000), price varchar(10), priceDis varchar(30), scr varchar(100))"""
 
 cursor.execute(creat_qwery)
 connection.commit()
 
-driver = Service('E:\\Downloads\\chromedriver_win32.zip\\chromedriver.exe')
-browser = webdriver.Chrome(service=driver)
+s = Service('E:\\Downloads\\chromedriver_win32.zip\\chromedriver.exe')
+browser = webdriver.Chrome(service=s)
 browser.get('https://trial-sport.ru/gds.php?s=51516&c1=1070639&c2=1070640')
 html_code = browser.page_source
 soup = BeautifulSoup(html_code, 'lxml')
@@ -25,7 +25,7 @@ price = soup.find_all('span', class_="price")
 priceDis = soup.find_all('span', class_="discount")
 pictures = soup.find_all('div', class_="img")
 
-for i in range(15):
+for i in range(20):
     url = 'https://trial-sport.ru/gds.php?s=51516&c1=1070639&c2=1070640'+pictures[i].find('a').find('img')['src']
     filename = f"E:\Downloads\parcing\img\{i}.jpg"
     wget.download(url, filename)
