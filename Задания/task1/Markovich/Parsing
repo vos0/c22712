@@ -1,0 +1,40 @@
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+import wget
+import psycopg2
+
+connection = psycopg2.connect(host='localhost', dbname='dbdata', user='postgres', password='Q1w2e3r4')
+cursor = connection.cursor()
+
+s = Service(r"C:\\Documents\\data\\chromedriver.exe")
+browser = webdriver.Chrome(service=s)
+browser.get('https://www.citilink.ru/catalog/smartfony/')
+html_text = browser.page_source
+b_soup = BeautifulSoup(html_text, 'lxml')
+
+insert_qwery = """create table phones\n
+(id serial primary key, name varchar(100), price varchar(100),delivery varchar(100), pictures varchar(100))"""
+
+cursor.execute(insert_qwery)
+connection.commit()
+
+phone_names = b_soup.find_all('a', class_="app-catalog-9gnskf e1259i3g0")
+phone_price = b_soup.find_all('span', class_="e1j9birj0 e106ikdt0 app-catalog-j8h82j e1gjr6xo0")
+phone_delivery = b_soup.find_all('div', class_="e16h9msl0 app-catalog-1fnzrtt e15ufesp0")
+pictures = b_soup.find_all('div', class_="app-catalog-zugobn e1o1y6qd0")
+
+for i in range(15):
+    url = 'https://www.citilink.ru/catalog/smartfony/'
+    filename = f"C:\\Users\\mark6\\OneDrive\\Desktop\\БД\\img\\{i}.jpg"
+    wget.download(url, filename)
+    ins_qwery = f"""INSERT INTO public.phones(name, price, delivery, pictures)\n
+    VALUES ('{phone_names[i].text}', '{phone_price[i].text}', '{phone_delivery[i].text}', '{filename}');"""
+    cursor.execute(ins_qwery)
+    connection.commit()
+
+cursor.execute("Select * from phones")
+print(cursor.fetchall())
+
+cursor.close()
+connection.close()
