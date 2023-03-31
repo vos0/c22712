@@ -16,7 +16,7 @@ soup = BeautifulSoup(html, "lxml")
 
 penny = soup.find_all(attrs={"class": "product-layout product-grid col-lg-4 col-md-4 col-sm-6 col-xs-6"})
 
-with psyc.connect(dbname="db_for_parse", user="perfecto") as conn:
+with psyc.connect(dbname="db_for_parse", user="dialuna") as conn:
     with conn.cursor() as cursor:
         for i, product in enumerate(penny[1:]):
             image_link = product.find("img").attrs.get("src")
