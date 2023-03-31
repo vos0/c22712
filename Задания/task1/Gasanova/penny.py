@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.service import Service
 from wget import download
 import psycopg2 as psyc
 
-# s = Service("chromedriver")
+# s = Service("chromedriver") на Ubuntu можно не указывать путь до драйвера если что :)
 URL = "https://proskateshop.ru/skejtbordy/?utm_source=yandex&utm_medium=cpc&utm_campaign=cn%7Cskeyty_gz-1%7Ccid%7C51517250%7Csearch&utm_content=gid%7C4180310153%7Caid%7C8980588780%7C20506942844_20506942844%7Cmain&utm_term=%D0%9F%D0%B5%D0%BD%D0%BD%D0%B8%20%D0%B1%D0%BE%D1%80%D0%B4%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C&etext=2202.N39xvihj0F0Od_d4etv_6nh36sdlRP-T26wHLuCJfjo_JZtVI5O7HY5f8FOJnzuLZXB6eWZoZnp2dG1laHBlcA.aceac50a24e4832d82874cd59ca1f9a315d9b351&_openstat=ZGlyZWN0LnlhbmRleC5ydTs1MTUxNzI1MDs4OTgwNTg4NzgwO3lhbmRleC5ydTpndWFyYW50ZWU&yclid=1445113833197462400"
 brow = webdriver.Chrome()
 brow.get(URL)
