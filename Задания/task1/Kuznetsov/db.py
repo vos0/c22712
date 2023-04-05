@@ -25,14 +25,14 @@ price = soup.find_all('span', class_="price")
 priceDis = soup.find_all('span', class_="discount")
 pictures = soup.find_all('div', class_="img")
 
+
 for i in range(20):
     url = 'https://trial-sport.ru/gds.php?s=51516&c1=1070639&c2=1070640'+pictures[i].find('a').find('img')['src']
     filename = f"E:\Downloads\parcing\img\{i}.jpg"
     wget.download(url, filename)
-    ins_qwery = f"""insert into public.Parser(product_name, description, price, priceDis, scr)
-        VALUES ('{product_name[i].text}','{description[i].text}', '{price[i].text}', '{priceDis[i].text}', '{filename}')"""
+    cursor.execute(f"""insert into Parsing (product_name, description, price, priceDis, scr)
+        VALUES ('{product_name[i].text}','{description[i].text}', '{price[i].text}', '{priceDis[i].text}', '{filename}')""")
     connection.commit()
-
 
 
 
