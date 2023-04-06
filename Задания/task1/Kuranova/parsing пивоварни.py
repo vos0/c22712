@@ -27,7 +27,7 @@ item.pop(8)
 connection = psycopg2.connect(host='localhost', dbname='breweries', user='postgres', password='Q1w2e3r4t5')
 cursor=connection.cursor()
 create = """ create table Information
-    (id primary key int, Name varchar(100), Place varchar(150), Sorts varchar(15), AmountOfRatings varchar(25),
+    (id int primary key, Name varchar(100), Place varchar(150), Sorts varchar(15), AmountOfRatings varchar(25),
     Rating varchar(10), ImageLink varchar(150));"""
 cursor.execute(create)
 connection.commit()
