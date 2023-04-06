@@ -26,7 +26,7 @@ code = soup.find_all('div', class_= 'app-catalog-0 e1dsj6g20')
 price = soup.find_all('div', class_= 'app-catalog-0 e1dsj6g20')
 picture = soup.find_all('div', class_='app-catalog-0 e1jarwcz0')
 
-for i in range(10):
+for i in range(len(name)):
     url = picture[i].find('img').attrs['src']
     file = f"C:\\Users\\Yekaterina\\Desktop\\baza\\pic{i}.JPG"
     wget.download(url, file)
