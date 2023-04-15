@@ -27,7 +27,7 @@ def from_bd(message):
         return
     else:
         data = execute_request(f"select * from laptops where id = {current_id}")[0][1:-1]
-        names_of_columns = [i[0] for i in execute_request(f"""select Column_name from Information_schema.columns where Table_name = 'laptops'""")][1:-1]
+        names_of_columns = ["Товар", "Цена", "Диагональ", "Разрешение", "Процессор", "Оперативная память", "Графический контроллер", "Объём диска"]
         everydata = []
         for data_name, column_name in zip(data, names_of_columns):
             everydata.append(column_name.capitalize() + ": " + data_name)
