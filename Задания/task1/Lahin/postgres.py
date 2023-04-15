@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 import time
-
+import config
 i = 1
 s = Service("С:\DATA\ChromeDriver\chromedriver.exe")
 browser = webdriver.Chrome(service=s)
@@ -23,7 +23,7 @@ productst = soup.find_all('a', class_="product-title__text")
 pricest = soup.find_all('span', class_="price__main-value")
 features = soup.find_all('span', class_="product-feature-list__value")
 pictures =  soup.find_all('div', class_="product-picture-container")
-connection=psycopg2.connect(host='localhost', dbname='dbdata', user='postgres', password='Q1w2e3r4')
+connection=psycopg2.connect(host=config.host, dbname=config.dbname, user=config.user, password=config.password)
 cursor = connection.cursor()
 insert = """CREATE TABLE public.laptops(
 id serial primary key,

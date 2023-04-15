@@ -1,7 +1,8 @@
 import telebot
 import psycopg2
+import config
 def execute_request(request):
-    connection = psycopg2.connect(host='localhost', dbname='dbdata', user='postgres', password='Q1w2e3r4')
+    connection = psycopg2.connect(host=config.host, dbname=config.dbname, user=config.user, password=config.password)
     cursor = connection.cursor()
     cursor.execute(request)
     result = cursor.fetchall()
@@ -9,7 +10,7 @@ def execute_request(request):
     connection.close()
     return result
 max_id = int(execute_request("select count(*) from laptops")[0][0])
-bot = telebot.TeleBot('5656574233:AAEU1Ggc4J1aWMtlLnphtScDd3jGCrzbuuY')
+bot = telebot.TeleBot(config.bot_token)
 @bot.message_handler(commands=["start"])
 def start(m, res=False):
     bot.send_message(m.chat.id, f'Привет. Введите идентификатор от 1 до {max_id}, чтобы получить данные: ')
