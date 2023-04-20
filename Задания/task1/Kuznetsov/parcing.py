@@ -12,4 +12,3 @@ product_name=soup.find_all('a', class_='title')
 description=soup.find_all('span', class_='description')
 for product_name, description in zip(product_name, description):
     print(f"Продукт: {product_name.text} \nОписание: {description.text}")
-print(" ")

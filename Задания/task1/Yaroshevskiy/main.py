@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from wget import download
 import psycopg2 as psyc
 
@@ -27,5 +26,4 @@ with psyc.connect(dbname="db_for_parse", user="perfecto") as conn:
 
             cursor.execute(f"""insert into images(link, name, price, description, file)
                                values ('{image}', '{title}', '{price}', '{desc}', 'images/{i}.jpg')""")
-        
         conn.commit()
