@@ -34,3 +34,4 @@ def from_bd(message):
         bot.send_message(message.chat.id, "\n\n".join(everydata))
     bot.send_message(message.chat.id, f"Введите следующий ID от {min_id} до {max_id}:")
 bot.polling(none_stop=True, interval=0)
+#for commit
