@@ -2,7 +2,7 @@ import telebot
 import psycopg2
 from telebot import types
 import random
-
+#hello
 connection = psycopg2.connect(host='localhost', dbname='dbdata', user='postgres',
                               password='Q1w2e3r4')
 cursor = connection.cursor()
