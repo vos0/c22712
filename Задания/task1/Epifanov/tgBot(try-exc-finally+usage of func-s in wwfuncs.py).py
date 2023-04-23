@@ -40,7 +40,7 @@ def start(m, res=False):
 
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
-    if (message.text.strip() == "Хочу информацию о любых цвеах, пожалуйста"):
+    if (message.text.strip() == "Хочу информацию о любых цветах, пожалуйста"):
         i = random.choice(arr)
         a1 = f'Название: {i[1]};\nЦена: {i[2]};\nСкидка(в процентах): {i[3]};\n'
         bot.send_message(message.chat.id, a1)
