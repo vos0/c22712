@@ -26,7 +26,7 @@ bot = telebot.TeleBot('5980905704:AAH2qIP4Gy60nhuKNAojOGpmI6zwNoJK1Iw')
 @bot.message_handler(commands=["start"])
 def start(m, res=False):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    item1 = types.KeyboardButton("Хочу информацию о любых цвеах, пожалуйста")
+    item1 = types.KeyboardButton("Хочу информацию о любых цветах, пожалуйста")
     item2 = types.KeyboardButton("Хочу картинку любых цветов, пожалуйста")
     item3 = types.KeyboardButton("Хочу информацию о предложении дня, пожалуйста")
     item4 = types.KeyboardButton("Общая информация о сведениях, находящихся в базе данных")
