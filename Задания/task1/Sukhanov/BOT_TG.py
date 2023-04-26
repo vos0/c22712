@@ -1,39 +1,39 @@
 import telebot
-import random
+import psycopg2
+import config
 from telebot import types
+import random
 
-f = open('C:\\Users\\71332\\Desktop\\p\\факт.txt', 'r', encoding='UTF-8')
-facts = f.read().split('\n')
-f.close()
+connection = psycopg2.connect(host='localhost', dbname='dbdata', user='postgres', password='Q1w2e3r4')
 
-f = open('C:\\Users\\71332\\Desktop\\p\\поговорка.txt', 'r', encoding='UTF-8')
-thinks  = f.read().split('\n')
-f.close()
+cursor = connection.cursor()
 
+sel_query = """SELECT * FROM public.parser"""
+cursor.execute(sel_query)
+array = list(cursor.fetchall())
 
 bot = telebot.TeleBot('6293063008:AAEFscB5LEjxC_4irrcgT-z6Eb0NXYOxZng')
-
-
 @bot.message_handler(commands=["start"])
 def start(m, res=False):
-
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    item1 = types.KeyboardButton("Факт")
-    item2 = types.KeyboardButton("Поговорка")
+    item1 = types.KeyboardButton("Рандомный продукт")
+    item2 = types.KeyboardButton("Повтори!")
     markup.add(item1)
     markup.add(item2)
-    bot.send_message(m.chat.id, 'Нажми: \nФакт'
-                                ' для получения интересного факта\nПоговорка '
-                                '— для получения мудрой цитаты ', reply_markup=markup)
+    bot.send_message(m.chat.id,
+                     '"Рандомный продукт" - для получения карточки товара\n "Повтори!" - для повторения сообщений.',
+                     reply_markup=markup)
+
 
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
-    if message.text.strip() == 'Факт':
-        answer = random.choice(facts)
-    elif message.text.strip() == 'Поговорка':
-        answer = random.choice(thinks)
-    bot.send_message(message.chat.id, answer)
+    if (message.text.strip() == 'Рандомный продукт'):
+        i = random.choice(array)
+        ans = f'Название: {i[1]}\nЦена: {i[2]}\nРейтинг: {i[3]}\n'
+        bot.send_message(message.chat.id, ans)
+        bot.send_photo(message.chat.id, open(i[4], 'rb'))
+    elif (message.text.strip() == 'Повтори!'):
+        bot.send_message(message.chat.id, 'Ввод: ' + message.text)
 
 
-
-bot.infinity_polling(none_stop=True, interval=0) 
+bot.polling(none_stop=True, interval=0)
