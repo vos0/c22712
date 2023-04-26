@@ -19,11 +19,19 @@ browser.get('https://www.ozon.ru/category/platya-zhenskie-7502/')
 html_code = browser.page_source
 soup = BeautifulSoup(html_code, 'lxml')
 
-name = soup.find_all('span', class_="m2e e3m m3e m5e tsBodyL k7l l7k")
+names = []
 sale = soup.find_all('div', class_="eg1 g3e")
+
 price = soup.find_all('span', class_="a2a-a2")
 info = soup.find_all('span', class_="je4")
 picture = soup.find_all('div', class_="k1m")
+
+products = soup.find_all("div", class_="k7o o7k")
+for product in products:
+    names.append(soup.find('span', class_="m2e e3m m3e m5e tsBodyL k7l l7k").text.strip())
+
+print(names)
+exit(0)
 
 for i in range(20):
     url = picture[i].find('img').attrs['src']
