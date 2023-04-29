@@ -25,8 +25,6 @@ def start(message):
 	
 	bot.send_message(message.chat.id, "ЙОУ, {0.first_name}!\n Я твой помощник в мире скейтбординга😎".format(message.from_user, bot.get_me()))
 
-#@bot.message_handler(content_types=['text'])
-#def get_text_messages(message):
 	markup = types.ReplyKeyboardMarkup(resize_keyboard=True) #создание кнопок
 	btn1 = types.KeyboardButton("Лучший скейтборд этого сезона")
 	btn2 = types.KeyboardButton("Предложение дня")
