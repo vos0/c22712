@@ -51,7 +51,7 @@ def handle_text(message):
 		bot.send_message(message.chat.id, ans)
 		bot.send_photo(message.chat.id, open(i[4], 'rb'))
 		cat = open('kotik.webm', 'rb')
-		bot.send_sticker(message.chat.id, cat)	
+		bot.send_video(message.chat.id, cat)	
 	elif (message.text.strip() == "Выбор редакции нашей компании"):
 		i = random.choice(array)
 		ans = f'Название: {i[2]}\nЦена: {i[3]}\n'
