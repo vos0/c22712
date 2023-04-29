@@ -13,9 +13,8 @@ except psycopg2.errors.UndefinedTable:
 	import problems
 	sel_query = """SELECT * FROM bot"""
 	cursor.execute(sel_query)
-    
-array = list(cursor.fetchall())
 
+array = list(cursor.fetchall())
 
 bot = telebot.TeleBot('secret')
 
@@ -36,8 +35,7 @@ def start(message):
 	bot.send_message(message.chat.id,
                      'Лучший скейтборд этого сезона - это именно то, что тебе нужно, если хочешь быть самым крутым.\nПредложение дня - то, что актуально на сегодняшний день.\nВыбор редакции - просто доверься выбору наших сотрудников и тебе понравится :)\n',
                      reply_markup=markup)
-                     
-                     
+                                         
 @bot.message_handler(content_types=['text'])        
 def handle_text(message):
 	if (message.text.strip() == "Лучший скейтборд этого сезона"):
