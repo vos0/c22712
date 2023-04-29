@@ -3,7 +3,7 @@ import psycopg2
 from telebot import types
 import random
 
-connection = psycopg2.connect(host='localhost', dbname='work', user='dialuna', password='Timka07')
+connection = psycopg2.connect(host='localhost', dbname='work', user='dialuna', password='Timka07') # да-да :)
 cursor = connection.cursor()
 try:
 	sel_query = """SELECT * FROM bot"""
