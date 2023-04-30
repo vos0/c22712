@@ -40,22 +40,22 @@ def start(message):
 def handle_text(message):
 	if (message.text.strip() == "Лучший скейтборд этого сезона"):
 		i = random.choice(array)
-		ans = f'Название: {i[2]}\nЦена: {i[3]}\n'
-		bot.send_message(message.chat.id, ans)
+		inf = f'Название: {i[2]}\nЦена: {i[3]}\n'
+		bot.send_message(message.chat.id, inf)
 		bot.send_photo(message.chat.id, open(i[4], 'rb'))
 		cat = open('kotik.webm', 'rb')
 		bot.send_video(message.chat.id, cat)
 	elif (message.text.strip() == "Предложение дня"):
 		i = random.choice(array)
-		ans = f'Название: {i[2]}\nЦена: {i[3]}\n'
-		bot.send_message(message.chat.id, ans)
+		inf = f'Название: {i[2]}\nЦена: {i[3]}\n'
+		bot.send_message(message.chat.id, inf)
 		bot.send_photo(message.chat.id, open(i[4], 'rb'))
 		cat = open('kotik.webm', 'rb')
 		bot.send_video(message.chat.id, cat)	
 	elif (message.text.strip() == "Выбор редакции нашей компании"):
 		i = random.choice(array)
-		ans = f'Название: {i[2]}\nЦена: {i[3]}\n'
-		bot.send_message(message.chat.id, ans)
+		inf = f'Название: {i[2]}\nЦена: {i[3]}\n'
+		bot.send_message(message.chat.id, inf)
 		bot.send_photo(message.chat.id, open(i[4], 'rb'))
 		cat = open('kotik.webm', 'rb')
 		bot.send_video(message.chat.id, cat)
