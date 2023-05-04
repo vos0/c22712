@@ -14,15 +14,14 @@ Image = soup.find_all(attrs={"class": "holder-img"})
 
 connection = psycopg2.connect(host='localhost', dbname='dbdata', user='postgres', password='Q1w2e3r4')
 cursor = connection.cursor()
-create_q = '''CREATE TABLE Food  
-     (ID serial primary key, Name varchar(500), Price varchar(60), src varchar(100))'''
+create_q = '''CREATE TABLE Food (ID serial primary key, Name varchar(500), Price varchar(60), src varchar(100))'''
 cursor.execute(create_q)
 connection.commit()
 
 #https://smartomato.ams3.cdn.digitaloceanspaces.com/uploads/media/photo/769221/dish_large__1.jpg
-for j in range(15):
+for j in range(19):
     url = Image[j].find('img').attrs['src']
-    tempf = f"C:\\Users\\Harutyun\\Desktop\\prog\\food{j}.jpg"
+    tempf = f"img\\food{j}.jpg"
     wget.download(url, tempf)
     insert_query = f'''INSERT into public.Food(Name, Price, src) values ('{Name[j].text}', '{Price[j].text}', '{tempf}') '''
     cursor.execute(insert_query)
