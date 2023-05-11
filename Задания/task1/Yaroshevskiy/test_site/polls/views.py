@@ -5,7 +5,8 @@ from django.shortcuts import render
 
 def index(request):
     context = {
-        "text": "test"
+        "text": "test",
+        "list": range(101)
     }
 
     return HttpResponse(render(request, "polls/index.html", context))
