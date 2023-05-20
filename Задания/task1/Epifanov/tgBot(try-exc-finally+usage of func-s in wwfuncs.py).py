@@ -60,7 +60,7 @@ def handle_text(message):
         bot.send_photo(message.chat.id, open(i[4], 'rb'))
     elif (message.text.strip() == "Поиск конкретного предложения по ID"):
         sent = bot.send_message(message.chat.id,
-                         f'Введите идентификатор(ID) от {min_id} до {max_id}, чтобы получить информацию о конкретном предложении: ')
+                         f'Введите идентификатор(ID, целое число) от {min_id} до {max_id}, чтобы получить информацию о конкретном предложении: ')
         bot.register_next_step_handler(sent, ret_id)
     else:
         bot.send_message(message.chat.id, "С помощью данного бота вы можете получить информацию о 60-и цветах одного из московских магазинов по их продаже, в частности их: название, цену, скидку(в процентах) и фото. Вы можете это осуществить, взаимодействуя с ботом. Попробуйте! ")
@@ -75,6 +75,7 @@ def ret_id(message):
         a2 = f'Название: {z[1]};\nЦена: {z[2]};\nСкидка(в процентах): {z[3]};\n'
         bot.send_message(message.chat.id, a2)
         bot.send_photo(message.chat.id, open(z[4], 'rb'))
+        bot.send_message(message.chat.id, "Для повторного поиска по ID воспользуйтесь соответствующей кнопкой в 'меню'")
 
 bot.polling(none_stop=True, interval=0)
 
