@@ -7,14 +7,13 @@
  </head>
  <body>
 
-  <table>
-   {% for i in list %}
-   <tr>
-    <th>{{ i }}</th>
-    <th>{{ i }}</th>
-   </tr>
-   {% endfor %}
-  </table>
-
+  {% for time, file_path in data %}
+  <div>
+     <div style="height: 32px;">
+           <span itemprop="name">{{ time }}</span>
+     </div>
+     <img itemprop="image" alt="name to be replaced" src="{% static file_path %}" width=500px>
+  </div>
+  {% endfor %}
  </body>
 </html>
