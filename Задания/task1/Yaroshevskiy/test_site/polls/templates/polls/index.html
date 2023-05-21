@@ -6,16 +6,23 @@
   <title>TEST</title> 
  </head>
  <body>
-  <h1>{{ text }}</h1>
 
-  <table>
-   {% for i in list %}
-   <tr>
-    <th>{{ i }}</th>
-    <th>{% widthratio i 1 i %}</th>
-   </tr>
-   {% endfor %}
-  </table>
-
+  {% for name, file_path, description in data %}
+  <div class="product">
+    <a title="{{ name }}">
+            <div class="title" style="height: 32px;">
+                <span class="name" itemprop="name">{{ name }}</span>
+            </div>
+    </a>
+        
+    <a title="{{ name }}">
+          <img itemprop="image" alt="{{ name }}" src="{% static file_path %}">
+    </a>
+        <p class="product-desc">{{ description }}</p>        
+        <div itemprop="offers" class="offers">
+          <span>{{ price }}</span>
+        </div>
+  </div>
+  {% endfor %}
  </body>
 </html>
