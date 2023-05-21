@@ -66,16 +66,17 @@ def handle_text(message):
         bot.send_message(message.chat.id, "С помощью данного бота вы можете получить информацию о 60-и цветах одного из московских магазинов по их продаже, в частности их: название, цену, скидку(в процентах) и фото. Вы можете это осуществить, взаимодействуя с ботом. Попробуйте! ")
 
 def ret_id(message):
-    now_id = int(message.text)
-    if now_id > max_id or now_id < min_id:
-        bot.send_message(message.chat.id, "По такому ID нет данных. Попробуйте заново через 'меню' кнопок найти интересующее вас предложение")
-        return
-    else:
+    try:
+        now_id = (message.text)
+        now_id = int(float(now_id))
         z = list(select(now_id))
         a2 = f'Название: {z[1]};\nЦена: {z[2]};\nСкидка(в процентах): {z[3]};\n'
         bot.send_message(message.chat.id, a2)
         bot.send_photo(message.chat.id, open(z[4], 'rb'))
         bot.send_message(message.chat.id, "Для повторного поиска по ID воспользуйтесь соответствующей кнопкой в 'меню'")
+    except ValueError:
+        bot.send_message(message.chat.id,
+                         "По такому ID нет данных. Попробуйте заново через 'меню' кнопок найти интересующее вас предложение")
 
 bot.polling(none_stop=True, interval=0)
 
