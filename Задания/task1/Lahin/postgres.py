@@ -43,7 +43,7 @@ cursor.execute(insert)
 connection.commit()
 for i in range(len(productst)):
     url = "https://"+pictures[i].find('img')['src']
-    filename = f"C:\DATA\Images\{i+1}.jpg"
+    filename = f"C:/Users/Andrew/PycharmProjects/DjangoProga/polls/static/img/laptops/{i+1}.jpg"
     u = []
     for j in range(10):
         u.append(features[10*i+j].text)
