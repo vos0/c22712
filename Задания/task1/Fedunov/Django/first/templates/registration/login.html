@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Добро пожаловать</h1>
+    <p>Введите логин и пароль:</p>
+
+    <form action="/login/" method="POST">
+        {% csrf_token %}
+        </p>
+        {{ form }}
+        </p>
+        <input type="submit" value="Войти">
+    </form>
+
+    {% if forms.errors %}
+        {{ form.errors }}
+    {% endif %}
+
+    <p><a href="/">Выйти в меню</a></p>
+</body>
+</html>

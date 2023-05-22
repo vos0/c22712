@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Голосования</title>
+</head>
+<body>
+    <h1>Голосования</h1>
+    {% if request.user.is_authenticated %}
+        User: {{ request.user }} |
+        <a href="/logout">Выйти</a>
+    {% else %}
+        <a href="/login/">Войти</a>
+    {% endif %}
+    <ul>
+        <li><a href="/Путин/">Путин</a></li>
+        <li><a href="/Cyberpunk/">Оцените Cyberpunk 2077</a></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная Страница</title>
+</head>
+<body>
+    <h1>Голосования</h1>
+    {% if request.user.is_authenticated %}
+        User: {{ request.user }} |
+        <a href="/profile">Профиль</a> |
+        <a href="/admin">Создать голосование</a>
+    {% else %}
+        <a href="/login/">Войти</a>
+    {% endif %}
+    {% block content %}
+    {% if questions %}
+    {% for question in questions %}
+    <div class ="card-mb-3">
+        <div class ="card-body">
+            <p class ="lead">{{ question.question_text }}</p>
+            <a href="/votings/{{ question.id }}/" class ="btn btn-primary btn-sm">Проголосовать</a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>Нет доступных голосований</p>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

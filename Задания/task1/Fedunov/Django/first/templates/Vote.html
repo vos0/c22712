@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vote</title>
+</head>
+<body>
+    <a class ="btn btn-secondary btn-sm mb-3" href ='/Голосования/'>Вернуться к голосованиям</a>
+    <h1 class ="text-center mb-3">{{ question.question_text }}</h1>
+    <form action ="submit" method ="post">
+    <div>
+        {% for answer in answers %}
+            <div class ="form-check">
+                <input type ="radio" id="{{ answer.id }}" name="variant" value="{{ answer.id }}" {% if answer.target %} checked {% endif %}>
+                    <label for ="{{ answer.id }}">{{ answer.choice_text }}</label>
+                    [{{ answer.count }}]
+            </div>
+        {% endfor %}
+    {% csrf_token %}
+    <input type ="submit" value ="Проголосовать" class ="btn btn-success btn-lg btn-block mt-4" />
+    </div>
+    </form>
+</body>
+</html>
