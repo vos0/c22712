@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+  <title>TEST</title> 
+ </head>
+ <body>
+
+  {% for name, file_path, description in data %}
+  <div class="product">
+    <a title="{{ name }}">
+            <div class="title" style="height: 32px;">
+                <span class="name" itemprop="name">{{ name }}</span>
+            </div>
+    </a>
+        
+    <a title="{{ name }}">
+          <img itemprop="image" alt="{{ name }}" src="{% static file_path %}">
+    </a>
+        <p class="product-desc">{{ description }}</p>        
+        <div itemprop="offers" class="offers">
+          <span>{{ price }}</span>
+        </div>
+  </div>
+  {% endfor %}
+ </body>
+</html>
